@@ -18,8 +18,15 @@ func MakeSrcdir(folName string){
 	}
 }
 
+func MakeSrcdir2(folName string) {
+	if _, err := os.Stat(folName);
+		os.IsNotExist(err) {
+		os.Mkdir(folName, 0777)
+	}
+}
+
 func OperateFile(fileName, inputString string){
-	file, err := os.OpenFile(fileName, os.O_WRONLY | os.O_CREATE, 0777)
+	file, err := os.OpenFile(fileName, os.O_RDWR | os.O_CREATE, 0777)
 	if err != nil {
 		fmt.Println(err)
 		log.Fatal(err)
