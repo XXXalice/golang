@@ -5,5 +5,6 @@ import (
 )
 
 func main() {
-	io.MakeSrcdir()
+	io.MakeSrcdir2("ddd")
+	io.OperateFile("ddd/test.txt", "aaaa")
 }
