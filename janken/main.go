@@ -8,20 +8,22 @@ import (
 
 func main() {
 	sc := bufio.NewScanner(os.Stdin)
-	txt := lineParse(sc)
+	read_judge := sc.Scan()
+	var txt string
+	if read_judge {
+		txt = sc.Text()
+	}
 	fmt.Println(txt)
 }
 
 func lineParse(sc bufio.Scanner) []string {
-	line := []string
+	line := []string{}
 	read_judge := sc.Scan()
 	if read_judge {
 		txt := sc.Text()
-		for _, s := range txt{
-			line = append(line, s)
-		}
+		line = append(line, txt)
 	}
-	return txt
+	return line
 }
 
 func janken(cpu_hand, you_hand int) string {
