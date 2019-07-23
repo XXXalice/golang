@@ -5,13 +5,13 @@ import (
 	"strings"
 	"bufio"
 	"os"
-	// "reflect"
+	"reflect"
 	"strconv"
 )
 
 func oneLineInt(s string) []int {
 	temp := strings.Split(s, " ")
-	// fmt.Println(len(temp))
+	fmt.Println(len(temp))
 	ints := []int{}
 	for _, elem := range(temp) {
 		int_elem, _ := strconv.Atoi(elem)
@@ -48,8 +48,8 @@ func main() {
 		txt = scanner.Text()
 	}
 	ints := oneLineInt(txt)
-	// fmt.Println(ints[1])
-	// fmt.Println(reflect.TypeOf(ints[0]))
+	fmt.Println(ints[1])
+	fmt.Println(reflect.TypeOf(ints[0]))
 	result := coinCount(ints)
 	fmt.Println(result)
 }
