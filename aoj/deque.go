@@ -31,7 +31,9 @@ func strToIntArray(s string) []int {
 
 func executeOrder(order []int) (out int, err error) {
 	// 破壊: arr
-	output := -1
+	var output int
+	var output_judge bool
+	output_judge = false
 	switch order[0] {
 	case 0:
 		// push
@@ -42,6 +44,7 @@ func executeOrder(order []int) (out int, err error) {
 		}
 	case 1:
 		// randomAccess
+		output_judge = true
 		output =  arr[order[1]]
 	case 2:
 		// pop
@@ -55,7 +58,7 @@ func executeOrder(order []int) (out int, err error) {
 
 	}
 
-	if output >= 0 {
+	if output_judge {
 		return output, nil
 	}else {
 		return -1, errors.New("not randomAccess.")
