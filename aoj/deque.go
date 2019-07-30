@@ -36,7 +36,7 @@ func executeOrder(order []int) (out int, err error) {
 	case 0:
 		// push
 		if order[1] == 0 || len(arr) == 0{
-			arr, arr[0] = append(arr[0:1], arr[0:]...), order[2]
+			arr = append([]int{order[2]}, arr[0:]...)
 		}else {
 			arr = append(arr, order[2])
 		}
