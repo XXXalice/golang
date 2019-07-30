@@ -10,6 +10,7 @@ import (
 )
 
 var sc = bufio.NewScanner(os.Stdin)
+var arr = []int{}
 
 func nLine() string {
 	sc.Scan()
@@ -28,15 +29,15 @@ func strToIntArray(s string) []int {
 	return int_arr
 }
 
-func executeOrder(order []int, arr []int) (out int, err error) {
+func executeOrder(order []int) (out int, err error) {
 	// 破壊: arr
 	output := -1
 	switch order[0] {
 	case 0:
 		// push
-		if order[1] == 0 {
-			arr, arr[0] = append(arr[:1], arr[0:]...), order[2]
-		}else if order[1] == 1{
+		if order[1] == 0 || len(arr) == 0{
+			arr, arr[0] = append(arr[0:1], arr[0:]...), order[2]
+		}else {
 			arr = append(arr, order[2])
 		}
 	case 1:
@@ -44,14 +45,16 @@ func executeOrder(order []int, arr []int) (out int, err error) {
 		output =  arr[order[1]]
 	case 2:
 		// pop
-		var pop_pos int
 		if order[1] == 0 {
-			pop_pos = 0
+			// 前
+			arr = append(arr[:0], arr[0+1:]...)
 		}else if order[1] == 1 {
-			pop_pos = -1
+			// 末尾
+			arr = arr[:len(arr)-1]
 		}
-		arr = append(arr[:pop_pos], arr[pop_pos+1:]...)
+
 	}
+
 	if output >= 0 {
 		return output, nil
 	}else {
@@ -67,10 +70,12 @@ func main() {
 		one_order := nLine()
 		orders = append(orders, strToIntArray(one_order))
 	}
-	arr := []int{}
 	result := []int{}
 	for _, op := range(orders) {
-		out, err := executeOrder(op, arr)
+		out, err := executeOrder(op)
+
+		fmt.Println(arr)
+
 		if err == nil {
 			result = append(result, out)
 		}
