@@ -18,10 +18,6 @@ func BuiltDeck() []string {
 }
 
 func main() {
-	//fmt.Println("who are you?")
-	//scanner := bufio.NewScanner(os.Stdin)
-	//scanner.Scan()
-	//fmt.Println("Hi,", scanner.Text())
 	deck := BuiltDeck()
 	fmt.Println(deck)
 }
