@@ -77,7 +77,7 @@ func main() {
 	for _, op := range(orders) {
 		out, err := executeOrder(op)
 
-		fmt.Println(arr)
+		//fmt.Println(arr)
 
 		if err == nil {
 			result = append(result, out)
