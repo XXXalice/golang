@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"math/rand"
 )
 
 func BuiltDeck() []string {
@@ -15,6 +16,14 @@ func BuiltDeck() []string {
 		}
 	}
 	return deck
+}
+
+func Shuffle(d []string) []string {
+	n := len(d)
+	for i := n - 1; i >= 0; i-- {
+		j := rand.Intn(i + 1)
+		d[i], d[j] = d[j], d[i]
+	}
 }
 
 func main() {
