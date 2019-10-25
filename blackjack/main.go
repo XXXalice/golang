@@ -18,7 +18,7 @@ func BuiltDeck() []string {
 	return deck
 }
 
-func Shuffle(d []string) []string {
+func Shuffle(d []string) {
 	n := len(d)
 	for i := n - 1; i >= 0; i-- {
 		j := rand.Intn(i + 1)
