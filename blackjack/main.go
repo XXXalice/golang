@@ -26,7 +26,15 @@ func Shuffle(d []string) {
 	}
 }
 
+func Draw(d []string) (string, []string) {
+	drawCard := d[0]
+	d = append(d[:0], d[1:]...)
+	return drawCard, d
+}
+
 func main() {
 	deck := BuiltDeck()
-	fmt.Println(deck)
+	Shuffle(deck)
+	c, deck := Draw(deck)
+	fmt.Println(c)
 }
