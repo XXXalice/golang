@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"./card"
 	"strings"
 	"strconv"
@@ -16,8 +15,7 @@ type BlackjackDealer struct {
 	Deck []string
 }
 
-func (d BlackjackDealer) Init(start_money int) {
-	d.Money = start_money
+func (d BlackjackDealer) Init() {
 	d.Deck = card.BuiltDeck()
 	card.Shuffle(d.Deck)
 	var c string
@@ -57,8 +55,13 @@ func (d BlackjackDealer) GameProgress(choice string) {
 
 
 func main() {
-	deck := card.BuiltDeck()
-	card.Shuffle(deck)
-	c, deck := card.Draw(deck)
-	fmt.Println(c)
+	dealer := BlackjackDealer{
+		Money: 100,
+		Dealer_sum: 0,
+		Player_sum: 0,
+		Dealer_hands: make([]string, 0),
+		Player_hands: make([]string, 0),
+		Deck: make([]string, 0),
+	}
+	dealer.Init()
 }
