@@ -5,7 +5,6 @@ import (
 	"./card"
 	"strings"
 	"strconv"
-	"math/rand"
 )
 
 type BlackjackDealer struct {

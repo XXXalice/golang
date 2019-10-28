@@ -1,6 +1,9 @@
 package card
 
-import "math/rand"
+import (
+	"math/rand"
+	"time"
+)
 
 func BuiltDeck() []string {
 	number := []string{"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13"}
@@ -16,6 +19,7 @@ func BuiltDeck() []string {
 }
 
 func Shuffle(d []string) []string {
+	rand.Seed(time.Now().UnixNano())
 	n := len(d)
 	for i := n - 1; i >= 0; i-- {
 		j := rand.Intn(i + 1)
