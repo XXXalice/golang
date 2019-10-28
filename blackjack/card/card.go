@@ -3,7 +3,7 @@ package card
 import "math/rand"
 
 func BuiltDeck() []string {
-	number := []string{"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"}
+	number := []string{"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13"}
 	mark := []string{"spade","heart","clover","diamond"}
 	deck := make([]string, 0)
 	for _, n := range number {
@@ -15,12 +15,13 @@ func BuiltDeck() []string {
 	return deck
 }
 
-func Shuffle(d []string) {
+func Shuffle(d []string) []string {
 	n := len(d)
 	for i := n - 1; i >= 0; i-- {
 		j := rand.Intn(i + 1)
 		d[i], d[j] = d[j], d[i]
 	}
+	return d
 }
 
 func Draw(d []string) (string, []string) {
