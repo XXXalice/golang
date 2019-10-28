@@ -1,9 +1,11 @@
 package main
 
 import (
+	"fmt"
 	"./card"
 	"strings"
 	"strconv"
+	"math/rand"
 )
 
 type BlackjackDealer struct {
@@ -15,9 +17,8 @@ type BlackjackDealer struct {
 	Deck []string
 }
 
-func (d BlackjackDealer) Init() {
-	d.Deck = card.BuiltDeck()
-	card.Shuffle(d.Deck)
+func (d BlackjackDealer) Init() ([]string, []string){
+	d.Deck = card.Shuffle(card.BuiltDeck())
 	var c string
 	for range(make([]int, 2)) {
 		c, d.Deck = card.Draw(d.Deck)
@@ -25,6 +26,7 @@ func (d BlackjackDealer) Init() {
 		c, d.Deck = card.Draw(d.Deck)
 		d.Player_hands = append(d.Player_hands, c)
 	}
+	return d.Dealer_hands, d.Player_hands
 }
 
 func (d BlackjackDealer) CardJudge(p_card string, d_card string) bool {
@@ -47,6 +49,7 @@ func (d BlackjackDealer) GameProgress(choice string) {
 	}
 }
 
+
 func main() {
 	dealer := BlackjackDealer{
 		Money: 100,
@@ -56,5 +59,7 @@ func main() {
 		Player_hands: make([]string, 0),
 		Deck: make([]string, 0),
 	}
-	dealer.Init()
+	dHands, pHands := dealer.Init()
+	fmt.Println(dHands)
+	fmt.Println(pHands)
 }
