@@ -47,13 +47,6 @@ func (d BlackjackDealer) GameProgress(choice string) {
 	}
 }
 
-//func (d Dealer) Split(str string, idf string) []string {
-//	for _, char := range str {
-//		complex(char, 1)
-//	}
-//}
-
-
 func main() {
 	dealer := BlackjackDealer{
 		Money: 100,
