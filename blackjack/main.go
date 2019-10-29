@@ -58,6 +58,21 @@ func main() {
 		Deck: make([]string, 0),
 	}
 	dealer.Init()
-	fmt.Println(dealer.Player_hands)
-	fmt.Println(dealer.Dealer_hands)
+	var hidden []string
+	for {
+		fmt.Println("---your hands---")
+		fmt.Println(dealer.Player_hands)
+		fmt.Println("---dealer hands---")
+		for idx, c := range dealer.Dealer_hands {
+			if idx == 0 {
+				hidden = append(hidden, c)
+			} else {
+				hidden = append(hidden, "???")
+			}
+
+		}
+		fmt.Println(hidden)
+		break
+	}
+
 }
