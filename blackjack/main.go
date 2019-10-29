@@ -16,7 +16,7 @@ type BlackjackDealer struct {
 	Deck []string
 }
 
-func (d BlackjackDealer) Init() ([]string, []string){
+func (d *BlackjackDealer) Init() {
 	d.Deck = card.Shuffle(card.BuiltDeck())
 	var c string
 	for range(make([]int, 2)) {
@@ -25,10 +25,9 @@ func (d BlackjackDealer) Init() ([]string, []string){
 		c, d.Deck = card.Draw(d.Deck)
 		d.Player_hands = append(d.Player_hands, c)
 	}
-	return d.Dealer_hands, d.Player_hands
 }
 
-func (d BlackjackDealer) CardJudge(p_card string, d_card string) bool {
+func (d *BlackjackDealer) CardJudge(p_card string, d_card string) bool {
 	p_num, _ := strconv.Atoi(strings.Split(p_card, "_")[1])
 	d_num, _ := strconv.Atoi(strings.Split(d_card, "_")[1])
 	var res bool
@@ -40,7 +39,7 @@ func (d BlackjackDealer) CardJudge(p_card string, d_card string) bool {
 	return res
 }
 
-func (d BlackjackDealer) GameProgress(choice string) {
+func (d *BlackjackDealer) GameProgress(choice string) {
 	if choice == "hit" {
 
 	} else if choice == "stand" {
@@ -58,7 +57,7 @@ func main() {
 		Player_hands: make([]string, 0),
 		Deck: make([]string, 0),
 	}
-	dHands, pHands := dealer.Init()
-	fmt.Println(dHands)
-	fmt.Println(pHands)
+	dealer.Init()
+	fmt.Println(dealer.Player_hands)
+	fmt.Println(dealer.Dealer_hands)
 }
